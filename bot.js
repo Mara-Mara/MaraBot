@@ -19,4 +19,12 @@ bot.on('messageCreate', (message) => {
     }
 });
 
+bot.on('messageCreate', (message) => {
+    if (message.author.bot) return;
+    if (message.content === 'ping') {
+        message.channel.send('Pong!');
+    }
+});
+
+
 bot.login(process.env.DISCORD_TOKEN);
