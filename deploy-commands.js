@@ -4,8 +4,9 @@ const { Routes } = require('discord-api-types/v9');
 const { Client, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
 
-const clientId = '1333595088663613550'; // Replace with your bot's client ID
-const token = process.env.DISCORD_TOKEN; // Your bot's token
+const clientId = '1333595088663613550';
+const guildId = '1019267629875220514';
+const token = process.env.DISCORD_TOKEN;
 
 const commands = [
     new SlashCommandBuilder()
@@ -24,7 +25,7 @@ const rest = new REST({ version: '9' }).setToken(token);
         console.log('Started refreshing application (/) commands.');
 
         await rest.put(
-            Routes.applicationCommands(clientId),
+            Routes.applicationCommands(clientId,guildId),
             { body: commands },
         );
 
